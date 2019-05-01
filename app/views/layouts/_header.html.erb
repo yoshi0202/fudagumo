@@ -1,0 +1,13 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+        <ul class="navbar-nav mr-auto">
+            <li>
+                <%= link_to 'Fudagumo', root_path, id: "logo" %>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+                <li><%= link_to "マイページ", "#", class: "link" %></li>
+                <li><%= button_tag "製造する",class: "btn btn-primary", data: { toggle: "modal",target: "#post" }  %></li>
+            </ul>
+    </div>
+</header>

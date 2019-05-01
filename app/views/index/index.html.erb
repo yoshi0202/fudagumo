@@ -1,9 +1,16 @@
-<h1>札雲製造機</h1>
+<h1 class="text-center">Fudagumo</h1>
+<p class="text-center">Fudagumoは、日本語に対応したタグクラウドジェネレータです</p>
+<h2 class="text-center">Fudagumoで作られたタグクラウドたち</h2>
 <div class="container text-center">
-  <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post">製造する</button>
-  <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <%= render partial: "modal", locals: { test: @test}%>
-    </div>
+  <div class="row">
+    <% (0..31).each do |i| %>
+      <div class="col-lg-3 p-3">
+      テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+      </div>
+    <% end %>
   </div>
+</div>
+<div class="modal hide fade" id="post" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" >
+<div class="modal-dialog" role="document">
+  <%= render partial: "modal"%>
 </div>

@@ -16,3 +16,12 @@
 
 // for Bootstrap4
 @import "bootstrap";
+
+.modal-dialog{
+    max-width:1200px;
+}
+
+.canvas-container{
+    max-width:90%;
+    max-height:500px;
+}
