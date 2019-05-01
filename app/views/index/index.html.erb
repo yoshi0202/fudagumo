@@ -1,0 +1,9 @@
+<h1>札雲製造機</h1>
+<div class="container text-center">
+  <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post">製造する</button>
+  <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <%= render partial: "modal", locals: { test: @test}%>
+    </div>
+  </div>
+</div>
