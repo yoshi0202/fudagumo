@@ -25,12 +25,10 @@ $(function(){
     });
 
     function chgCol(value){
-        let width_min = 10;
-        let height_min = 10;
-        let width_max = parentWidth - 100 - width_min;
-        let height_max = parentHeight - height_min;
-        let randomX;
-        let randomY;
+        var width_min = 10;
+        var height_min = 10;
+        var width_max = parentWidth - 100 - width_min;
+        var height_max = parentHeight - height_min;
         ctx.lineWidth = 2;
         ctx.fillStyle = "#000";
         if (firstflg) {
