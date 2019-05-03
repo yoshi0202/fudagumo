@@ -25,25 +25,25 @@ $(function(){
     });
 
     function chgCol(value){
-        let minX = 10;
-        let minY = 10;
-        let maxX = parentWidth - 100 - minX;
-        let maxY = parentHeight - minY;
+        let width_min = 10;
+        let height_min = 10;
+        let width_max = parentWidth - 100 - width_min;
+        let height_max = parentHeight - height_min;
         let randomX;
         let randomY;
         ctx.lineWidth = 2;
         ctx.fillStyle = "#000";
         if (firstflg) {
             ctx.font = "100px cursive";
-            randomX = (parentWidth /2 ) - ((ctx.measureText(value).width)/ 2);
-            randomY = parentHeight / 2;
+            width_random = (parentWidth /2 ) - ((ctx.measureText(value).width)/ 2);
+            height_random = parentHeight / 2;
             firstflg = false;
         } else {
-            randomX = Math.floor( Math.random() * maxX + 1 - minX ) + minX;
-            randomY = Math.floor( Math.random() * maxY + 1 - minY ) + minY;
+            width_random = Math.floor( Math.random() * width_max + 1 - width_min ) + width_min;
+            height_random = Math.floor( Math.random() * height_max + 1 - height_min ) + height_min;
             ctx.font = "15px cursive";
         }
-        ctx.fillText(value, randomX, randomY);
+        ctx.fillText(value, width_random, height_random);
     }
 
     //canvas内リセット処理
