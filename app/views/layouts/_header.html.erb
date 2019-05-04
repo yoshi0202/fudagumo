@@ -6,9 +6,14 @@
             </li>
         </ul>
         <ul class="navbar-nav">
-            <li><%= link_to "マイページ", login_path, class: "link" %></li>
-            <li><%= link_to "登録", new_user_path, class: "link" %></li>
-            <li><%= button_tag "製造する",class: "btn btn-primary", data: { toggle: "modal",target: "#post" }  %></li>
+            <% if logged_in? %>
+                <li><%= button_tag "製造する",class: "btn btn-primary", data: { toggle: "modal",target: "#post" }  %></li>
+                <li><%= link_to "マイページ", current_user, class: "link" %></li>
+                <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+            <% else %>
+                <li><%= link_to "登録", new_user_path, class: "link" %></li>
+                <li><%= link_to "ログイン", login_path, class: "link" %></li>
+            <% end %>
         </ul>
     </div>
 </header>
