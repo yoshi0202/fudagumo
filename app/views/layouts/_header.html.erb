@@ -6,8 +6,9 @@
             </li>
         </ul>
         <ul class="navbar-nav">
-                <li><%= link_to "マイページ", login_path, class: "link" %></li>
-                <li><%= button_tag "製造する",class: "btn btn-primary", data: { toggle: "modal",target: "#post" }  %></li>
-            </ul>
+            <li><%= link_to "マイページ", login_path, class: "link" %></li>
+            <li><%= link_to "登録", new_user_path, class: "link" %></li>
+            <li><%= button_tag "製造する",class: "btn btn-primary", data: { toggle: "modal",target: "#post" }  %></li>
+        </ul>
     </div>
 </header>
