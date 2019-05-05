@@ -17,6 +17,9 @@
 // for Bootstrap4
 @import "bootstrap";
 
+body {
+    background-color: #f0f5f9;
+}
 .modal-dialog{
     max-width:1200px;
 }
@@ -41,5 +44,20 @@
 }
 
 .form-bg {
-    background-color: #efefef;
+    background-color: #FFF;
 }
+
+.navbar {
+    background-color: #52616b;
+    .nav-title {
+        font-size: 30px;
+    }
+    a {
+        color: #f0f5f9;
+    }
+}
+
+h1 {
+    margin-bottom:30px;
+}
+

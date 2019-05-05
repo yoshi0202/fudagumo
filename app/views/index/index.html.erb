@@ -1,4 +1,4 @@
-<h1 class="text-center">Fudagumo</h1>
+<h1 class="text-center mt-3">Fudagumo</h1>
 <p class="text-center">Fudagumoは、日本語に対応したタグクラウドジェネレータです</p>
 <h2 class="text-center">Fudagumoで作られたタグクラウドたち</h2>
 <div class="container text-center">
@@ -10,8 +10,4 @@
     <% end %>
   </div>
 </div>
-<div class="modal hide fade" id="post" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" >
-    <div class="modal-dialog" role="document">
-        <%= render partial: "layouts/modal"%>
-    </div>
-</div>
+<%= render partial: "layouts/modal"%>

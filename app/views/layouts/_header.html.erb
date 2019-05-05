@@ -1,19 +1,19 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container">
-        <ul class="navbar-nav mr-auto">
-            <li>
-                <%= link_to 'Fudagumo', root_path, id: "logo" %>
-            </li>
-        </ul>
+<nav class="navbar navbar-expand-sm pl-5">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to 'Fudagumo', root_path, id: "logo", class: "nav-title" %>
+    <div class="collapse navbar-collapse justify-content-end pr-5">
         <ul class="navbar-nav">
-            <% if logged_in? %>
-                <li><%= button_tag "製造する",class: "btn btn-primary", data: { toggle: "modal",target: "#post" }  %></li>
-                <li><%= link_to "マイページ", current_user, class: "link" %></li>
-                <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
-            <% else %>
-                <li><%= link_to "登録", new_user_path, class: "link" %></li>
-                <li><%= link_to "ログイン", login_path, class: "link" %></li>
-            <% end %>
+        <% if logged_in? %>
+            <li class="nav-item mr-3"><%= button_tag "製造する",class: "btn btn-primary nav-link", data: { toggle: "modal",target: "#post" }  %></li>
+            <li class="nav-item mr-3"><%= link_to "マイページ", current_user, class: "nav-link" %></li>
+            <li class="nav-item mr-3"><%= link_to "個人設定", edit_user_path(current_user), class: "nav-link" %></li>
+            <li class="nav-item mr-3"><%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link" %></li>
+        <% else %>
+            <li class="nav-item mr-3"><%= link_to "登録", new_user_path, class: "link nav-link" %></li>
+            <li class="nav-item mr-3"><%= link_to "ログイン", login_path, class: "link nav-link" %></li>
+        <% end %>
         </ul>
     </div>
-</header>
+</nav>

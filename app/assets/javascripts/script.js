@@ -33,7 +33,7 @@ $(function(){
         ctx.fillStyle = "#000";
         if (firstflg) {
             ctx.font = "100px cursive";
-            width_random = (parentWidth /2 ) - ((ctx.measureText(value).width)/ 2);
+            width_random = (parentWidth / 2 ) - ((ctx.measureText(value).width)/ 2);
             height_random = parentHeight / 2;
             firstflg = false;
         } else {

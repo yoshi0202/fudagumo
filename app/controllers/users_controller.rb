@@ -5,6 +5,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
+
   def new
     @user = User.new
   end
@@ -12,7 +13,24 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       redirect_to @user
+    else 
+      redirect_to root_path
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+    if !logged_in? || current_user.id != @user.id
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @user = User.update(user_params)
+    if @user
+      redirect_to current_user
     else 
       redirect_to root_path
     end

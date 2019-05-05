@@ -1,10 +1,10 @@
-<h1 class="text-center">新規登録</h1>
 <div class="container">
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-            <div class="form-bg">
+            <div class="form-bg mt-5">
                 <div class="form-container p-5">
+                <h1 class="text-center">新規登録</h1> 
                 <%= form_with model: @user, local: true do |form| %>
                     <div class="form-group">
                         <%= form.label :名前 %>
@@ -30,9 +30,6 @@
         <div class="col-lg-3"></div>
     </div>
 </div>
-<div class="modal hide fade" id="post" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" >
-    <div class="modal-dialog" role="document">
-        <%= render partial: "layouts/modal"%>
-    </div>
-</div>
+<%= render partial: "layouts/modal"%>
+
 
