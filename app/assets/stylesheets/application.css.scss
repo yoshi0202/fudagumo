@@ -21,11 +21,11 @@ body {
     background-color: #f0f5f9;
 }
 .modal-dialog{
-    max-width:1200px;
+    max-width:1500px;
 }
 
 .canvas-container{
-    max-width:90%;
+    height:500px;
     max-height:500px;
 }
 
@@ -61,3 +61,164 @@ h1 {
     margin-bottom:30px;
 }
 
+.base-color-container, .back-color-container{
+    input {
+        display: none;
+    }
+
+    label {
+        display: block;
+        float: left;
+        cursor: pointer;
+        margin: 0;
+        width: 200px;
+        padding: 10px;
+        margin: 10px;
+        color: #869198;
+        font-size: 16px;
+        text-align: center;
+        line-height: 1;
+        transition: .2s;
+    }
+
+    label:first-of-type{
+        border-radius: 3px 0 0 3px;
+    }
+    label:last-of-type{
+        border-radius: 0 3px 3px 0;
+    }
+
+    input[type="radio"]:checked + .base_red, input[type="radio"]:checked + .back_red{
+        background-color: #ef5350;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_pink, input[type="radio"]:checked + .back_pink {
+        background-color: #EC407A;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_purple, input[type="radio"]:checked + .back_purple {
+        background-color: #AB47BC;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_deeppurple, input[type="radio"]:checked + .back_deeppurple {
+        background-color: #7E57C2;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_indigo, input[type="radio"]:checked + .back_indigo {
+        background-color: #5C6BC0;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_blue, input[type="radio"]:checked + .back_blue {
+        background-color: #42A5F5;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_lightblue, input[type="radio"]:checked + .back_lightblue {
+        background-color: #29B6F6;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_cyan, input[type="radio"]:checked + .back_cyan {
+        background-color: #26C6DA;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_teal, input[type="radio"]:checked + .back_teal {
+        background-color: #26A69A;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_green, input[type="radio"]:checked + .back_green {
+        background-color: #66BB6A;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_lightgreen, input[type="radio"]:checked + .back_lightgreen {
+        background-color: #9CCC65;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_lime, input[type="radio"]:checked + .back_lime {
+        background-color: #D4E157;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_yellow, input[type="radio"]:checked + .back_yellow {
+        background-color: #FFEE58;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_amber, input[type="radio"]:checked + .back_amber {
+        background-color: #FFCA28;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_orange, input[type="radio"]:checked + .back_orange {
+        background-color: #FFA726;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_deeporange, input[type="radio"]:checked + .back_deeporange {
+        background-color: #FF7043;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_brown, input[type="radio"]:checked + .back_brown {
+        background-color: #8D6E63;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_grey, input[type="radio"]:checked + .back_grey {
+        background-color: #BDBDBD;
+        color: #fff;
+    }
+    input[type="radio"]:checked + .base_bluegrey, input[type="radio"]:checked + .back_bluegrey {
+        background-color: #78909C;
+        color: #fff;
+    }
+}
+.base_red,.back_red {
+    background-color: #ef9a9a;
+}
+.base_pink,.back_pink {
+    background-color: #F48FB1;
+}
+.base_purple,.back_purple {
+    background-color: #CE93D8;
+}
+.base_deeppurple,.back_deeppurple {
+    background-color: #B39DDB;
+}
+.base_indigo,.back_indigo {
+    background-color: #9FA8DA;
+}
+.base_blue,.back_blue {
+    background-color: #90CAF9;
+}
+.base_lightblue,.back_lightblue {
+    background-color: #81D4FA;
+}
+.base_cyan,.back_cyan {
+    background-color: #80DEEA;
+}
+.base_teal,.back_teal {
+    background-color: #80CBC4;
+}
+.base_green,.back_green {
+    background-color: #A5D6A7;
+}
+.base_lightgreen,.back_lightgreen {
+    background-color: #C5E1A5;
+}
+.base_lime,.back_lime {
+    background-color: #E6EE9C;
+}
+.base_yellow,.back_yellow {
+    background-color: #FFF59D;
+}
+.base_amber,.back_amber {
+    background-color: #FFE082;
+}
+.base_orange,.back_orange {
+    background-color: #FFCC80;
+}
+.base_deeporange,.back_deeporange {
+    background-color: #FFAB91;
+}
+.base_brown,.back_brown {
+    background-color: #BCAAA4;
+}
+.base_grey,.back_grey {
+    background-color: #EEEEEE;
+}
+.base_bluegrey,.back_bluegrey {
+    background-color: #B0BEC5;
+}

@@ -2,61 +2,55 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <p><%= @modal %></p>
-                <div id="generate-result"></div>
+                <div class="container">
+                <p>完成プレビュー</p>
                 <div class="canvas-container mx-auto">
                     <canvas id="cv1" style="border: solid 1px;"></canvas>
                 </div>
-                <%= form_with url: root_path, method: :get do |form| %>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6">
-
-                            </div>
-                            <div class="col-lg-6">
-                                <%= button_tag 'リセット', class: "btn btn-danger canvasreset", type: "button"%>
-                                <p class="text-center">ベースのカラーを選択</p>
-                                    <div>
-                                        <label>
-                                            <%= form.radio_button 'radio', 'base_red', class: "button" %>赤
-                                        </label>
-                                        <label>
-                                            <%= form.radio_button 'radio', 'base_blue', class: "button" %>青
-                                        </label>
-                                        <label>
-                                            <%= form.radio_button 'radio', 'base_yellow', class: "button" %>黃
-                                        </label>
-                                        <label>
-                                            <%= form.radio_button 'radio', 'base_green', class: "button" %>緑
-                                        </label>
-                                    </div>
-                                <p class="text-center">背景色を選択</p>
-                                    <div>
-                                        <label>
-                                            <%= form.radio_button 'radio', 'back_red', class: "button" %>赤
-                                        </label>
-                                        <label>
-                                            <%= form.radio_button 'radio', 'back_blue', class: "button" %>青
-                                        </label>
-                                        <label>
-                                            <%= form.radio_button 'radio', 'back_yellow', class: "button" %>黃
-                                        </label>
-                                        <label>
-                                            <%= form.radio_button 'radio', 'back_green', class: "button" %>緑
-                                        </label>
-                                    </div>
-                                <p class="text-center">タグクラウドにしたい ことば を入力</p>
-                                <% (0..9).each do |i| %>
-                                <div class="form-group">
-                                    <%= form.text_field :title, class: "form-control sentence" %>
-                                </div>
-                                <% end %>
-                            </div>
-                        </div>
+                <% color = {"赤": "red", %>
+                <%          "桃": "pink", %>
+                <%          "紫": "purple", %>
+                <%          "深紫": "deeppurple", %>
+                <%          "藍": "indigo", %>
+                <%          "青": "blue", %>
+                <%          "水": "lightblue", %>
+                <%          "薄青": "cyan", %>
+                <%          "鴨の羽": "teal", %>
+                <%          "緑": "green", %>
+                <%          "薄緑": "lightgreen", %>
+                <%          "黄緑": "lime", %>
+                <%          "黄": "yellow", %>
+                <%          "琥珀": "amber", %>
+                <%          "橙": "orange", %>
+                <%          "深橙": "deeporange", %>
+                <%          "茶": "brown", %>
+                <%          "灰": "grey", %>
+                <%          "青灰": "bluegrey" } %>
+                <%= form_with url: "#" do |form| %>
+                    <p>ベースのカラーを選択</p>
+                    <div class="base-color-container d-inline-block d-flex flex-wrap align-content-around justify-content-around">
+                        <% color.each do |key,value| %>
+                            <%= form.radio_button 'base-radio', "base_color", id: "base_#{value}", class: "base-color-button" %>
+                            <label for="base_<%= value %>" class="base_<%= value %> switch-off" ><%= key %></label> 
+                        <% end %>
                     </div>
+                    <p class="display-block">背景色を選択</p>
+                    <div class="back-color-container d-inline-block d-flex flex-wrap align-content-around justify-content-around">
+                        <% color.each do |key,value| %>
+                            <%= form.radio_button 'back-radio', "back_color", id: "back_#{value}", class: "back-color-button" %>
+                            <label for="back_<%= value %>" class="back_<%= value %> switch-off" ><%= key %></label> 
+                        <% end %>
+                    </div>
+                    <p>タグクラウドにしたい ことば を入力</p>
+                    <% (0..9).each do |i| %>
+                        <div class="form-group">
+                            <%= form.text_field :title, class: "form-control sentence" %>
+                        </div>
+                    <% end %>
                 <% end %>
                 <%= link_to "画像を保存する", "#", class: "btn btn-primary" %>
                 <%= button_tag '作成を中止する', class: "btn btn-danger", data: {dismiss: "modal"} %>
+                <%= button_tag 'リセット', class: "btn btn-danger canvasreset", type: "button"%>
             </div>
         </div>
     </div>
