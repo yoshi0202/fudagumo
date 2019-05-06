@@ -5,7 +5,7 @@
                 <div class="container">
                     <p>タグクラウドプレビュー</p>
                     <div class="canvas-container mx-auto">
-                        <canvas id="cv1" style="border: solid 1px;"></canvas>
+                        <canvas id="cv1" style="border: solid 1px #efefef;"></canvas>
                     </div>
                     <% color = {"赤": "red", %>
                     <%          "桃": "pink", %>
@@ -64,7 +64,7 @@
                     <% end %>
                     <div class="row text-center">
                         <div class="col-lg-4">
-                            <%= button_tag "画像を保存する", class: "btn btn-primary btn-block", type: "button" %>
+                            <%= button_tag "タグクラウドを作成する", class: "btn btn-primary btn-block create", type: "button", remote: true %>
                         </div>
                         <div class="col-lg-4">
                             <%= button_tag '作成を中止する', class: "btn btn-danger btn-block canvasreset", data: {dismiss: "modal"}, type: "button" %>

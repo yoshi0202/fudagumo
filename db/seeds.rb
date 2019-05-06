@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+30.times do |i|
+    Micropost.create(content: 'http://localhost:3000/img/1.png', user_id: 1)
+end

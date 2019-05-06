@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts
     if !logged_in? || current_user.id != @user.id
       redirect_to root_path
     end

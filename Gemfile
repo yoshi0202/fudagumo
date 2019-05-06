@@ -11,6 +11,8 @@ gem 'rails', '~> 5.1.7'
 gem 'bootstrap', '~> 4.3.1'
 gem 'bcrypt',         '3.1.12'
 gem 'jquery-rails'
+gem 'aws-sdk'
+gem 'config'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

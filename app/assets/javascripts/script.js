@@ -1,7 +1,9 @@
 $(function(){
+    $.ajaxSetup({
+        headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') }
+    });
     $.jCanvas.defaults.fromCenter = false;
     var cvs = document.getElementById("cv1");
-    var ctx = cvs.getContext("2d");
     var parentWidth;
     var parentHeight;
     var ColorCode = {
@@ -61,6 +63,41 @@ $(function(){
         parentHeight = $('.canvas-container').height();
         changeCanvasSize();
     });
+
+    //タグクラウド作成処理
+    $('.create').click(function(){
+        var tcImg = cvs.toDataURL('image/png');
+        var uuid = (function() {
+            var d = +new Date();
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+                .replace(/[xy]/g, function(c) {
+                    var r = (d + Math.random() * 16) % 16 | 0;
+                    return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+                });
+        });
+        var fileName = uuid();
+        console.log(fileName);
+        $.ajax({
+            url:'/microposts',
+            type:'POST',
+            dataType: 'json',
+            async: true,
+            data:{
+                'fileName':fileName,
+                'img': tcImg
+            }
+        }).done(function(res){
+            var addHtml = '<div class="col-lg-3 p-3">'
+                addHtml +='<img class="img-fluid center-block" src="' + res.result + '">'
+                addHtml +='</div>'
+            $(addHtml).prependTo('.row');
+        }).fail(function(err){
+            console.log("fail")
+        }).always(function(){
+            console.log("ajax end")
+            $('.modal').modal('hide');
+        })
+    })
 
     //canvas内リセット処理
     $('.canvasreset').on('click', function(){
