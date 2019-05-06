@@ -1,10 +1,9 @@
 $(function(){
+    $.jCanvas.defaults.fromCenter = false;
     var cvs = document.getElementById("cv1");
     var ctx = cvs.getContext("2d");
     var parentWidth;
     var parentHeight;
-    var firstflg = true;
-    var baseColor = '#FFF';
     var ColorCode = {
         "background": {
             "red" : "#ef9a9a",
@@ -49,10 +48,11 @@ $(function(){
             "bluegrey" : "#78909C"
         }
     }
-    $('.sentence').on("change",function(){
-        console.log($(this).val());
-        chgCol($(this).val());
-
+    $('.addsentence').click(function(){
+        chgCol($('.sentence').val(),$('select[name="sentenceLevel"]').val(),$('select[name="sentenceFont"]').val(),$('select[name="sentenceColor"]').val());
+        if ($('#clearFlg:checked').val() === "checked"){
+            $('.sentence').val("");
+        }
     })
 
     $('.modal').on('shown.bs.modal', function () {
@@ -61,69 +61,70 @@ $(function(){
         parentHeight = $('.canvas-container').height();
         changeCanvasSize();
     });
-    $('.canvasreset').click(function(){
-        clearCanvas();
+
+    //canvas内リセット処理
+    $('.canvasreset').on('click', function(){
+        $('canvas').removeLayers();
+        $('canvas').drawLayers();
     })
 
     $(window).resize(function() {
         //リサイズされたときの処理
         changeCanvasSize();
     });
-    $('input[name="base-radio"]:radio' ).change( function() {
-        var chooseColor = $(this).attr('id').split('_')[1];
-        baseColor = ColorCode.text[chooseColor]
-        console.log(chooseColor);
-    });
     $('input[name="back-radio"]:radio' ).change( function() {
+        console.log($('canvas').getLayer('background'));
+        if ($('canvas').getLayer('background') !== undefined) {
+            //背景レイヤーが存在する場合は削除してから再描画
+            $('canvas').removeLayer('background');
+        }
         var backgroundColor = $(this).attr('id').split('_')[1];
         console.log(backgroundColor);
         $('canvas').drawRect({
+            layer: true,
+            name: 'background',
+            index: -1000,
             fillStyle: ColorCode.background[backgroundColor],
             x: 0,
             y: 0,
             width: parentWidth,
-            height: parentHeight,
-            fromCenter: false
+            height: parentHeight
         });
-
+        $('canvas').drawLayers();
     });
 
-    function chgCol(value){
+    function chgCol(sentence, level, font, color){
         var width_min = 10;
         var height_min = 10;
         var width_max = parentWidth - 100 - width_min;
         var height_max = parentHeight - height_min;
-        ctx.lineWidth = 2;
-        ctx.fillStyle = "#000";
+        var fontSize;
+        if (level === 'strong') {
+            fontSize = 70;
+        } else if ( level === 'normal') {
+            fontSize = 40;
+        } else if ( level === 'weak') {
+            fontSize = 25;
+        }
         height_random = Math.floor( Math.random() * height_max + 1 - height_min ) + height_min;
         width_random = Math.floor( Math.random() * width_max + 1 - width_min ) + width_min;
-
-        // if (firstflg) {
-        //     ctx.font = "100px cursive";
-        //     width_random = (parentWidth / 2 ) - ((ctx.measureText(value).width)/ 2);
-        //     height_random = parentHeight / 2;
-        //     firstflg = false;
-        // } else {
-        //     width_random = Math.floor( Math.random() * width_max + 1 - width_min ) + width_min;
-        //     height_random = Math.floor( Math.random() * height_max + 1 - height_min ) + height_min;
-        //     ctx.font = "15px cursive";
-        // }
-        // ctx.fillText(value, width_random, height_random);
-
+        
         $('canvas').drawText({
             layer: true,
             draggable: true,
-            fillStyle: baseColor,
+            fillStyle: ColorCode.text[color],
             x: width_random, y: height_random,
-            fontSize: 48,
-            fontFamily: 'Nico Moji',
-            text: value
+            fontSize: fontSize,
+            fontFamily: font,
+            text: sentence
+        },function(){
+            $('canvas').drawLayers();
         });
     }
 
     //canvas内リセット処理
     function clearCanvas(){
-        ctx.clearRect(0, 0, parentWidth, parentHeight);
+        
     }
     //canvasのサイズ変更処理
     function changeCanvasSize(){
@@ -133,5 +134,6 @@ $(function(){
         // console.log(parentHeight);
         $('#cv1').attr('width', parentWidth);
         $('#cv1').attr('height', parentHeight);
+        $('canvas').drawLayers();
     }
 })
