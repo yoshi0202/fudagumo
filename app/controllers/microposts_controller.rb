@@ -3,6 +3,8 @@ class MicropostsController < ApplicationController
     include CarrierwaveBase64Uploader
     def create
         logger.debug(ENV['RAILS_ENV'])
+        logger.debug(ENV['s3url'])
+
         if Rails.env.production?
             setting = {
                 s3url: ENV['s3url'],
