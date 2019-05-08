@@ -2,13 +2,31 @@ class MicropostsController < ApplicationController
     require 'aws-sdk'
     include CarrierwaveBase64Uploader
     def create
+        logger.debug(ENV['RAILS_ENV'])
+        if ENV['RAILS_ENV'] = 'development'
+            setting = {
+                s3url: Settings.aws[:s3_url],
+                s3_bucket: Settings.aws[:s3_bucket],
+                region: Settings.aws[:region],
+                access_key: Settings.aws[:access_key],
+                secret_access_key: Settings.aws[:secret_access_key]
+            }
+        elsif ENV['RAILS_ENV'] = 'production'
+            setting = {
+                s3url: ENV['s3url'],
+                s3_bucket: ENV['s3_bucket'],
+                region: ENV['region'],
+                access_key: ENV['regiaccess_keyon'],
+                secret_access_key: ENV['secret_access_key']
+            }
+        end
         img = base64_conversion(params[:micropost][:img])
-        imgurl = Settings.aws[:s3_url] + Settings.aws[:s3_buclet] + "/" + params[:micropost][:fileName] + '.png'
+        imgurl = setting[:s3url] + setting[:s3_bucket] + "/" + params[:micropost][:fileName] + '.png'
         bucket = Aws::S3::Resource.new(
-                            :region => Settings.aws[:region],
-                            :access_key_id => Settings.aws[:access_key],
-                            :secret_access_key => Settings.aws[:secret_access_key],
-                            ).bucket(Settings.aws[:s3_buclet])
+                            :region => setting[:region],
+                            :access_key_id => setting[:access_key],
+                            :secret_access_key => setting[:secret_access_key],
+                            ).bucket(setting[:s3_bucket])
         bucket.object(params[:micropost][:fileName] + '.png').put(body: img, content_type: 'image/png', content_encoding: 'base64')
         # microposts = Micropost.new(post_params(content))
         Micropost.create(content: imgurl, user_id: current_user.id)
