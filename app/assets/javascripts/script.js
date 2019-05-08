@@ -66,6 +66,7 @@ $(function(){
 
     //タグクラウド作成処理
     $('.create').click(function(){
+        $(".create").prop('disabled', true);
         var tcImg = cvs.toDataURL('image/png');
         var uuid = (function() {
             var d = +new Date();
@@ -83,8 +84,10 @@ $(function(){
             dataType: 'json',
             async: true,
             data:{
-                'fileName':fileName,
-                'img': tcImg
+                'micropost': {
+                    'fileName':fileName,
+                    'img': tcImg
+                }
             }
         }).done(function(res){
             var addHtml = '<div class="col-lg-3 p-3">'
@@ -154,9 +157,8 @@ $(function(){
             fontSize: fontSize,
             fontFamily: font,
             text: sentence
-        },function(){
-            $('canvas').drawLayers();
         });
+        $('canvas').drawLayers();
     }
 
     //canvas内リセット処理

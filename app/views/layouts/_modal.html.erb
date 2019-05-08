@@ -3,7 +3,10 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="container">
-                    <p>タグクラウドプレビュー</p>
+                    <p class="modal-heading">タグクラウドプレビュー</p>
+                    <p class="a">追加した文章はドラッグ&ドロップで動かせます
+                        <button class="float-right btn btn-danger btn-lg mb-2 canvasreset">リセット</button>
+                    </p>
                     <div class="canvas-container mx-auto">
                         <canvas id="cv1" style="border: solid 1px #efefef;"></canvas>
                     </div>
@@ -27,12 +30,14 @@
                     <%          "灰": "grey", %>
                     <%          "青灰": "bluegrey" } %>
                     <%= form_with url: "#" do |form| %>
-                        <p class="display-block pt-3">背景色を選択</p>
-                        <div class="back-color-container d-inline-block d-flex flex-wrap align-content-around justify-content-around">
-                            <% color.each do |key,value| %>
-                                <%= form.radio_button 'back-radio', "back_color", id: "back_#{value}", class: "back-color-button" %>
-                                <label for="back_<%= value %>" class="back_<%= value %> switch-off" ><%= key %></label> 
-                            <% end %>
+                        <div class="background-container mt-2" style="border: solid 1px #efefef;">
+                            <p class="display-block pt-3 modal-heading">背景色を選択</p>
+                            <div class="back-color-container d-inline-block d-flex flex-wrap align-content-around justify-content-around">
+                                <% color.each do |key,value| %>
+                                    <%= form.radio_button 'back-radio', "back_color", id: "back_#{value}", class: "back-color-button" %>
+                                    <label for="back_<%= value %>" class="back_<%= value %> switch-off" ><%= key %></label> 
+                                <% end %>
+                            </div>
                         </div>
                         <div class="form-group text-center mt-3">
                             <div class="row">
@@ -42,7 +47,7 @@
                                 </div>
                                 <div class="col-lg-1">
                                     <%= form.label :"レベル" %>
-                                    <%= form.select "sentenceLevel", [["つよい", "strong"], ["普通", "normal"], ["よわい", "weak"]] ,class:"form-control" %>
+                                    <%= form.select "sentenceLevel", [["つよい", "strong"], ["ふつう", "normal"], ["よわい", "weak"]] ,class:"form-control" %>
                                 </div>
                                 <div class="col-lg-1">
                                     <%= form.label :"文字色" %>
@@ -62,15 +67,12 @@
                             </div>
                         </div>
                     <% end %>
-                    <div class="row text-center">
-                        <div class="col-lg-4">
+                    <div class="row text-center pt-3">
+                        <div class="col-lg-4 offset-lg-1">
                             <%= button_tag "タグクラウドを作成する", class: "btn btn-primary btn-block create", type: "button", remote: true %>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 offset-lg-2">
                             <%= button_tag '作成を中止する', class: "btn btn-danger btn-block canvasreset", data: {dismiss: "modal"}, type: "button" %>
-                        </div>
-                        <div class=" col-lg-offset-1 col-lg-3">
-                            <%= button_tag 'リセット', class: "btn btn-danger canvasreset btn-block", type: "button"%>
                         </div>
                     </div>
                 </div>
