@@ -3,21 +3,21 @@ class MicropostsController < ApplicationController
     include CarrierwaveBase64Uploader
     def create
         logger.debug(ENV['RAILS_ENV'])
-        if ENV['RAILS_ENV'] = 'development'
-            setting = {
-                s3url: Settings.aws[:s3_url],
-                s3_bucket: Settings.aws[:s3_bucket],
-                region: Settings.aws[:region],
-                access_key: Settings.aws[:access_key],
-                secret_access_key: Settings.aws[:secret_access_key]
-            }
-        elsif ENV['RAILS_ENV'] = 'production'
+        if Rails.env.production?
             setting = {
                 s3url: ENV['s3url'],
                 s3_bucket: ENV['s3_bucket'],
                 region: ENV['region'],
                 access_key: ENV['regiaccess_keyon'],
                 secret_access_key: ENV['secret_access_key']
+            }
+        else
+            setting = {
+                s3url: Settings.aws[:s3_url],
+                s3_bucket: Settings.aws[:s3_bucket],
+                region: Settings.aws[:region],
+                access_key: Settings.aws[:access_key],
+                secret_access_key: Settings.aws[:secret_access_key]
             }
         end
         img = base64_conversion(params[:micropost][:img])
