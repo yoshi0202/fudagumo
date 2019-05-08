@@ -3,10 +3,12 @@
 <h2 class="text-center">Fudagumoで作られたタグクラウドたち</h2>
 <div class="container text-center">
   <div class="row">
-    <% @microposts.each do |i| %>
+    <% if @microposts.any? %>
+      <% @microposts.each do |i| %>
         <div class="col-lg-3 p-3">
-            <%= image_tag i.content, class: "img-fluid center-block" %>
+          <%= image_tag i.content, class: "img-fluid center-block" %>
         </div>
+      <% end %>
     <% end %>
   </div>
 </div>
