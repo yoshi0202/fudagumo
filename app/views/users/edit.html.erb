@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-            <div class="form-bg mt-5">
+        <h1 class="text-center pt-5">設定変更</h1> 
+            <div class="form-bg">
                 <div class="form-container p-5">
-                <h1 class="text-center">設定変更</h1> 
                 <%= form_with model: @user, method: :put, local: true do |form| %>
                     <div class="form-group">
                         <%= form.label :名前 %>
