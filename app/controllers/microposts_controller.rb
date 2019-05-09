@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
         logger.debug(ENV['RAILS_ENV'])
         logger.debug(ENV['s3url'])
         logger.debug(ENV['region'])
-        logger.debug(ENV['regiaccess_keyon'])
+        logger.debug(ENV['access_key'])
         logger.debug(ENV['secret_access_key'])
 
         if Rails.env.production?
@@ -13,7 +13,7 @@ class MicropostsController < ApplicationController
                 s3url: ENV['s3url'],
                 s3_bucket: ENV['s3_bucket'],
                 region: ENV['region'],
-                access_key: ENV['regiaccess_keyon'],
+                access_key: ENV['access_key'],
                 secret_access_key: ENV['secret_access_key']
             }
         else
