@@ -4,6 +4,9 @@ class MicropostsController < ApplicationController
     def create
         logger.debug(ENV['RAILS_ENV'])
         logger.debug(ENV['s3url'])
+        logger.debug(ENV['region'])
+        logger.debug(ENV['regiaccess_keyon'])
+        logger.debug(ENV['secret_access_key'])
 
         if Rails.env.production?
             setting = {
